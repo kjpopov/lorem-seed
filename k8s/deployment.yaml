@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lorem-seed
+  labels:
+    app: lorem-seed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lorem-seed
+  template:
+    metadata:
+      labels:
+        app: lorem-seed
+    spec:
+      containers:
+      - name: lorem-seed
+        image: ghcr.io/kjpopov/lorem-seed:develop
+        command: ["/app/lorem-seed"]
+        args: ["-u", "http://localhost:1323/api/todo"]
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

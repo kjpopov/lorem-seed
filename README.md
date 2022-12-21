@@ -23,6 +23,12 @@ For example, to perform a load/stress test with a request interval of 5 seconds 
 lorem-seed -u http://example.com/api/todo -i 5 -p
 ```
 
+## You could also deploy the lorem-seed tool to Kubernetes:
+```
+kubectl apply -f k8s/
+```
+This deployment configuration will create a single replica of the lorem-seed container, using the latest image from the ghcr.io/kjpopov/lorem-seed repository on Github. Please adjust `k8s/deployment.yaml` according to your needs. The container will be run with the lorem-seed command and the -u flag set to http://localhost:1323/api/todo. You can modify the arguments as needed to match your desired usage of the tool.
+
 ## Contributions
 
 Contributions are welcome! If you have ideas for improvements or want to report a bug, please open an issue or submit a pull request.
